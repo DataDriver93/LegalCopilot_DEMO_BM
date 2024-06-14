@@ -1,8 +1,8 @@
 import streamlit as st
-import os
 from openai_integration import get_relevant_documents, get_combined_answers
 from UI.UI_components import render_input_page, render_output_page
 from UI.styles import load_css
+import os
 
 # Carica il CSS
 load_css()
@@ -22,12 +22,11 @@ else:
     question = st.session_state.question
     pdf_files = ["Docs/202401_Specifiche tecniche_gestionale.pdf", "Docs/202402_Contratto_987645.pdf", "Docs/Determina_N_ 202402.pdf", "Docs/Determina_N_ 202405.pdf", "Docs/Determina_N_202403.pdf"]
 
-    with st.spinner('Processing...'):
-       
+    with st.spinner("Sto ricercando all'interno della Knowledge Base..."):
         relevant_documents = get_relevant_documents(pdf_files, question)
-        combined_answers = get_combined_answers(relevant_documents, question)
+        combined_answers, filtered_documents = get_combined_answers(relevant_documents, question)
 
-        render_output_page(question, relevant_documents, combined_answers)
+        render_output_page(question, filtered_documents, combined_answers)
 
         if combined_answers:
             st.text_input("Ask follow-up...", key="followup")

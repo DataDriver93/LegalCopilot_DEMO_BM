@@ -21,23 +21,30 @@ def load_css():
             margin-bottom: 10px;
         }
 
+        .custom-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
         .custom-source {
             background-color: #1E2222; 
             color: #FFFFFF; 
             padding: 10px; 
             border-radius: 5px; 
-            display: inline-block; 
-            margin-right: 10px; 
+            flex: 1 1 calc(33.333% - 10px); /* Tre colonne con gap di 10px */
+            max-width: calc(33.333% - 10px);
+            box-sizing: border-box;
             margin-bottom: 20px; 
-            max-width: 30%; 
-            max-height: 150px; 
             overflow: hidden; 
-            vertical-align: top; 
         }
 
         .source-title {
             font-weight: bold;
             margin-bottom: 5px;
+            white-space: nowrap; /* Evita che il testo vada a capo */
+            overflow: hidden; /* Nasconde il testo in eccesso */
+            text-overflow: ellipsis; /* Aggiunge i tre puntini di sospensione */
         }
 
         .source-preview {

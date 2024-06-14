@@ -15,7 +15,7 @@ def render_output_page(question, relevant_documents, combined_answers):
         sources = [f"<div class='custom-source'><div class='source-title'>{pdf_file}</div><div class='source-preview'>{preview}</div></div>" for pdf_file, preview, _ in relevant_documents]
         st.markdown(f"<div class='user-question'>{question}</div>", unsafe_allow_html=True)
         st.markdown("<div class='custom-title'>📂 Sorgenti</div>", unsafe_allow_html=True)
-        st.markdown("\n".join(sources), unsafe_allow_html=True)
+        st.markdown(f"<div class='custom-grid'>{''.join(sources)}</div>", unsafe_allow_html=True)
         st.markdown("<div class='custom-title'>📌 Risposta</div>", unsafe_allow_html=True)
         st.markdown(combined_answers, unsafe_allow_html=True)
 
