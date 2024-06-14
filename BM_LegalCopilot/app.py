@@ -1,4 +1,5 @@
 import streamlit as st
+import os
 from openai_integration import get_relevant_documents, get_combined_answers
 from UI.UI_components import render_input_page, render_output_page
 from UI.styles import load_css
@@ -19,9 +20,10 @@ if not st.session_state.submitted:
     render_input_page()
 else:
     question = st.session_state.question
-    pdf_files = ["doc.pdf", "storia.pdf", "storia2.pdf"]
+    pdf_files = ["Docs/202401_Specifiche tecniche_gestionale.pdf", "Docs/202402_Contratto_987645.pdf", "Docs/Determina_N_ 202402.pdf", "Docs/Determina_N_ 202405.pdf", "Docs/Determina_N_202403.pdf"]
 
     with st.spinner('Processing...'):
+       
         relevant_documents = get_relevant_documents(pdf_files, question)
         combined_answers = get_combined_answers(relevant_documents, question)
 
