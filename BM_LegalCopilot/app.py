@@ -1,7 +1,7 @@
 import streamlit as st
 from openai_integration import get_relevant_documents, get_combined_answers
-from ui.ui_components import render_input_page, render_output_page
-from ui.styles import load_css
+from UI.UI_components import render_input_page, render_output_page
+from UI.styles import load_css
 
 # Carica il CSS
 load_css()

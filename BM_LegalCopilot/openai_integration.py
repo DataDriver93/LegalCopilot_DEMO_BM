@@ -1,6 +1,7 @@
 from openai import OpenAI
 import os
-from utils.pdf_utils import extract_text_from_pdf, get_preview
+from Utils.pdf_utils import extract_text_from_pdf, get_preview
+from dotenv import load_dotenv
 
 def get_openai_client():
     api_key = os.getenv('OPEN_AI_KEY')
