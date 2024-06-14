@@ -50,8 +50,11 @@ def get_combined_answers(relevant_documents, question):
         )
 
         answer = response.choices[0].message.content.strip()
-        if "Non ci sono paragrafi nel documento fornito che rispondono direttamente alla tua domanda" not in answer:
-            combined_answers += f"<div class='custom-answer'>{answer}</div>\n\n"
+        # Filtra risposte non pertinenti
+        if not any(phrase in answer for phrase in ["Non ci sono paragrafi nel documento fornito che rispondono direttamente alla tua domanda", "Mi dispiace, ma non sono in grado di trovare i paragrafi relativi alla tua domanda nel documento fornito"]):
+            # Aggiungi il nome del documento formattato alla risposta
+            document_info = f"<div style='font-size: small; font-style: italic; color: #ABCDEF	;'>{pdf_file}</div>"
+            combined_answers += f"{document_info}<div class='custom-answer'>{answer}</div>\n\n"
             filtered_documents.append((pdf_file, preview, text))
 
     return combined_answers, filtered_documents

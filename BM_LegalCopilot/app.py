@@ -21,8 +21,7 @@ if not st.session_state.submitted:
 else:
     question = st.session_state.question
     pdf_files = ["Docs/202401_Specifiche tecniche_gestionale.pdf", "Docs/202402_Contratto_987645.pdf", "Docs/Determina_N_ 202402.pdf", "Docs/Determina_N_ 202405.pdf", "Docs/Determina_N_202403.pdf"]
-
-    with st.spinner("Sto ricercando all'interno della Knowledge Base..."):
+    with st.spinner('Processing...'):
         relevant_documents = get_relevant_documents(pdf_files, question)
         combined_answers, filtered_documents = get_combined_answers(relevant_documents, question)
 
