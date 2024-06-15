@@ -22,8 +22,8 @@ def get_relevant_documents(pdf_files, question):
             response = client.chat.completions.create(
                 model="gpt-3.5-turbo",
                 messages=[
-                    {"role": "system", "content": "You are a helpful assistant who answers questions in Italian."},
-                    {"role": "user", "content": f"Il testo del seguente documento è rilevante per la domanda: '{question}'? Rispondi con 'Sì' o 'No' e una breve spiegazione.\n\nDocumento:\n{full_text}"}
+                    {"role": "system", "content": "Sei un assistente virtuale con l'obiettivo di supportare gli utenti nel recuperare documenti e parti di documenti in funzione del loro input."},
+                    {"role": "user", "content": f"Il testo del seguente documento è rilevante, inerente e tratta dello stesso argomento di: '{question}'? Rispondi con 'Sì' o 'No' e una breve spiegazione.\n\nDocumento:\n{full_text}"}
                 ]
             )
 
