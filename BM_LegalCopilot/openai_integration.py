@@ -5,15 +5,11 @@ import os
 
 # Carica le variabili d'ambiente dal file .env
 load_dotenv()
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
-def get_openai_client():
-    api_key = os.getenv('OPEN_AI_KEY')
-    if not api_key:
-        raise ValueError("La chiave API di OpenAI non è stata trovata. Assicurati di aver configurato la variabile d'ambiente correttamente.")
-    return OpenAI(api_key=api_key)
+client = OpenAI(api_key=OPENAI_API_KEY)
 
 def get_relevant_documents(pdf_files, question):
-    client = get_openai_client()
     relevant_documents = []
 
     for pdf_file in pdf_files:
@@ -36,7 +32,6 @@ def get_relevant_documents(pdf_files, question):
     return relevant_documents
 
 def get_combined_answers(relevant_documents, question):
-    client = get_openai_client()
     combined_answers = ""
     filtered_documents = []
 
